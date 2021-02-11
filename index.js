@@ -7,9 +7,7 @@ init();
 
 function init() {
   const logoText = logo({ name: "Employee Manager" }).render();
-
   console.log(logoText);
-
   loadMainPrompts();
 }
 
@@ -114,16 +112,13 @@ async function loadMainPrompts() {
 
 async function viewEmployees() {
   const employees = await db.findAllEmployees();
-
   console.log("\n");
   console.table(employees);
-
   loadMainPrompts();
 }
 
 async function viewEmployeesByDepartment() {
   const departments = await db.findAllDepartments();
-
   const departmentChoices = departments.map(({ id, name }) => ({
     name: name,
     value: id,
@@ -139,7 +134,6 @@ async function viewEmployeesByDepartment() {
   ]);
 
   const employees = await db.findAllEmployeesByDepartment(departmentId);
-
   console.log("\n");
   console.table(employees);
 
@@ -148,7 +142,6 @@ async function viewEmployeesByDepartment() {
 
 async function viewEmployeesByManager() {
   const managers = await db.findAllEmployees();
-
   const managerChoices = managers.map(({ id, first_name, last_name }) => ({
     name: `${first_name} ${last_name}`,
     value: id,
@@ -165,8 +158,6 @@ async function viewEmployeesByManager() {
 
   const employees = await db.findAllEmployeesByManager(managerId);
 
-  console.log("\n");
-
   if (employees.length === 0) {
     console.log("The selected employee has no direct reports");
   } else {
@@ -178,7 +169,6 @@ async function viewEmployeesByManager() {
 
 async function removeEmployee() {
   const employees = await db.findAllEmployees();
-
   const employeeChoices = employees.map(({ id, first_name, last_name }) => ({
     name: `${first_name} ${last_name}`,
     value: id,
@@ -202,7 +192,6 @@ async function removeEmployee() {
 
 async function updateEmployeeRole() {
   const employees = await db.findAllEmployees();
-
   const employeeChoices = employees.map(({ id, first_name, last_name }) => ({
     name: `${first_name} ${last_name}`,
     value: id,
@@ -218,7 +207,6 @@ async function updateEmployeeRole() {
   ]);
 
   const roles = await db.findAllRoles();
-
   const roleChoices = roles.map(({ id, title }) => ({
     name: title,
     value: id,
@@ -234,7 +222,6 @@ async function updateEmployeeRole() {
   ]);
 
   await db.updateEmployeeRole(employeeId, roleId);
-
   console.log("Updated employee's role");
 
   loadMainPrompts();
@@ -242,7 +229,6 @@ async function updateEmployeeRole() {
 
 async function updateEmployeeManager() {
   const employees = await db.findAllEmployees();
-
   const employeeChoices = employees.map(({ id, first_name, last_name }) => ({
     name: `${first_name} ${last_name}`,
     value: id,
@@ -258,7 +244,6 @@ async function updateEmployeeManager() {
   ]);
 
   const managers = await db.findAllPossibleManagers(employeeId);
-
   const managerChoices = managers.map(({ id, first_name, last_name }) => ({
     name: `${first_name} ${last_name}`,
     value: id,
@@ -275,16 +260,11 @@ async function updateEmployeeManager() {
   ]);
 
   await db.updateEmployeeManager(employeeId, managerId);
-
-  console.log("Updated employee's manager");
-
   loadMainPrompts();
 }
 
 async function viewRoles() {
   const roles = await db.findAllRoles();
-
-  console.log("\n");
   console.table(roles);
 
   loadMainPrompts();
