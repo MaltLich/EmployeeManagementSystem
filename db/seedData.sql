@@ -19,4 +19,4 @@ INSERT INTO employee
 VALUES
     ('Andrew', 'Novak', 1, NULL), ('Gary', 'Novak', 2, 1), ('Anna', 'Zimmerman', 3, NULL),
     ('Cooper', 'Mannon', 4, 3), ('Cairn', 'Novak', 5, NULL), ('Taylor', 'Zorman', 6, 5),
-    ('Samantha', 'La Fever', 7, NULL), ('Sean', 'Helbig', 8, 7);
+    ('Samantha', 'La Fever', 3, NULL), ('Sean', 'Helbig', 4, 7);

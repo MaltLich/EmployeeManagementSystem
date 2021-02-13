@@ -10,7 +10,7 @@ Create Table department (
 Create Table department (
     id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(50) UNIQUE NOT NULL,
-    last_name DECIMAL NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
     role_id INT NOT NULL,
     manager_id INT,
     CONSTRAINT fk_department FOREIGN KEY (manager_id) References employee(id) on delete set null
